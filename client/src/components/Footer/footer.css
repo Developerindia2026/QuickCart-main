@@ -1,0 +1,148 @@
+/* ===========================
+        FOOTER
+=========================== */
+
+.footer-container {
+    width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #e8e8e8;
+    margin-top: 80px;
+    padding: 70px 8%;
+    display: flex;
+    justify-content: space-between;
+    gap: 70px;
+    flex-wrap: wrap;
+}
+
+/* LEFT */
+
+.left-container {
+    flex: 1;
+    min-width: 320px;
+}
+
+.footer-logo {
+    width: 170px;
+    margin-bottom: 22px;
+}
+
+.left-para {
+    color: #6b7280;
+    line-height: 1.9;
+    font-size: 15px;
+    max-width: 430px;
+}
+
+/* RIGHT */
+
+.right-side {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 70px;
+    flex-wrap: wrap;
+}
+
+/* TITLES */
+
+.center-section h3,
+.end-section h3 {
+    font-size: 20px;
+    color: #111827;
+    margin-bottom: 22px;
+    font-weight: 700;
+}
+
+/* LINKS */
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all .3s ease;
+    font-size: 15px;
+}
+
+.footer-links li:hover {
+    color: #2563eb;
+    transform: translateX(8px);
+}
+
+/* CONTACT */
+
+.end-section p {
+    margin-bottom: 14px;
+    color: #6b7280;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.end-section p:hover {
+    color: #111827;
+}
+
+/* COPYRIGHT */
+
+.copyright-section {
+    width: 100%;
+    margin-top: 60px;
+    padding-top: 25px;
+    border-top: 1px solid #ececec;
+    text-align: center;
+}
+
+.copyright-section p {
+    color: #8b8b8b;
+    font-size: 14px;
+}
+
+/* IMAGE */
+
+.footer-logo:hover {
+    transform: scale(1.04);
+    transition: .3s;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:992px){
+
+    .footer-container{
+        flex-direction:column;
+        gap:50px;
+        padding:60px 40px;
+    }
+
+    .right-side{
+        justify-content:flex-start;
+        gap:70px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .footer-container{
+        padding:50px 25px;
+    }
+
+    .right-side{
+        flex-direction:column;
+        gap:40px;
+    }
+
+    .footer-logo{
+        width:150px;
+    }
+
+    .center-section h3,
+    .end-section h3{
+        font-size:18px;
+    }
+
+}

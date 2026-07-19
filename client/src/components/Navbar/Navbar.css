@@ -1,0 +1,282 @@
+/* ==========================================================
+   NEXCART PREMIUM NAVBAR CSS
+   (Starter Production Version)
+   Replace/extend as needed.
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Inter",sans-serif;
+    background:#fff;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    border:none;
+    background:none;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    height:80px;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid #ececec;
+    box-shadow:0 8px 30px rgba(0,0,0,.05);
+}
+
+.nav-logo img{
+    width:150px;
+    transition:.3s;
+}
+
+.nav-logo img:hover{
+    transform:scale(1.05);
+}
+
+.items{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:42px;
+}
+
+.nav-links a{
+    position:relative;
+    font-weight:600;
+    color:#222;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0;
+    height:2px;
+    background:#2563eb;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.btn-section{
+    display:flex;
+    gap:14px;
+    align-items:center;
+}
+
+.btn-like,.btn-nav{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f4f4f4;
+    transition:.3s;
+}
+
+.btn-like:hover,.btn-nav:hover{
+    background:#2563eb;
+    color:#fff;
+    transform:translateY(-3px);
+}
+
+.btn-account{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 22px;
+    border-radius:999px;
+    background:#111827;
+    color:#fff;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-account:hover{
+    background:#2563eb;
+}
+
+.hamburger-menu{
+    display:none;
+    width:48px;
+    height:48px;
+    border-radius:12px;
+    background:#f4f4f4;
+    align-items:center;
+    justify-content:center;
+}
+
+.mobile-menu{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(5px);
+    opacity:0;
+    visibility:hidden;
+    transition:.35s;
+    z-index:2000;
+}
+
+.mobile-menu.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.mobile-drawer{
+    position:absolute;
+    right:0;
+    top:0;
+    width:340px;
+    max-width:100%;
+    height:100%;
+    background:#fff;
+    transform:translateX(100%);
+    transition:.4s ease;
+    display:flex;
+    flex-direction:column;
+}
+
+.mobile-menu.active .mobile-drawer{
+    transform:translateX(0);
+}
+
+.mobile-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    border-bottom:1px solid #eee;
+}
+
+.mobile-logo img{
+    width:140px;
+}
+
+.close-menu{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    background:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.mobile-items{
+    padding:20px;
+}
+
+.mobile-items ul{
+    list-style:none;
+}
+
+.mobile-items li{
+    margin-bottom:10px;
+}
+
+.mobile-items a{
+    display:block;
+    padding:16px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.mobile-items a:hover{
+    background:#eff6ff;
+    color:#2563eb;
+    padding-left:24px;
+}
+
+.mobile-icons{
+    margin-top:auto;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    border-top:1px solid #eee;
+}
+
+.mobile-btn-like,
+.mobile-btn-nav,
+.mobile-btn-account{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    border-radius:12px;
+    font-weight:600;
+}
+
+.mobile-btn-like,
+.mobile-btn-nav{
+    background:#f4f4f4;
+}
+
+.mobile-btn-account{
+    background:#111827;
+    color:#fff;
+}
+
+@media (max-width:900px){
+
+    .items,
+    .btn-section{
+        display:none;
+    }
+
+    .hamburger-menu{
+        display:flex;
+    }
+
+}
+
+@media (max-width:600px){
+
+    .navbar{
+        height:72px;
+        padding:0 20px;
+    }
+
+    .nav-logo img{
+        width:125px;
+    }
+
+    .mobile-drawer{
+        width:100%;
+    }
+
+}
