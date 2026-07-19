@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import IndexPage from "../pages/indexPage";
 
-function Routing() {
+function appRoutes() {
   return (
     <Routes>
       <Route path="/" element={<IndexPage />} />
@@ -9,4 +9,4 @@ function Routing() {
   );
 }
 
-export default Routing;
+export default appRoutes;
