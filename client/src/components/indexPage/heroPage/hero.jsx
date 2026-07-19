@@ -6,7 +6,7 @@ import macbookimg from "../../../assets/header_macbook_image.png";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "./hero.css"
+import "./hero.css";
 
 function Hero() {
   return (
