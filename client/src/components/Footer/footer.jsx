@@ -35,8 +35,6 @@ function Footer() {
           </div>
         </div>
 
-<br></br>
-
 <div className="copyright-section">
           <p>Copyright 2025 © Deepanshu.dev All Right Reserved.</p>
         </div>

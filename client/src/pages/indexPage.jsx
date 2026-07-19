@@ -1,6 +1,9 @@
+import Hero from "../components/indexPage/heroPage/hero";
+
 function IndexPage() {
     return (
-        <>
+        <>  
+        <Hero/>
         </>
     )
 };
