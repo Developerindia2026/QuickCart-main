@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.category-container {
+  width: 100%;
+  padding: 80px 6%;
+  background: #f8fafc;
+  font-family: "Poppins", sans-serif;
+}
+
+.category-container h1 {
+  text-align: start;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+.category-container h1::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  margin-left: 12px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+}
+
+.categories-section {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.category-products {
+  width: 100%;
+  background: #fff;
+  border-radius: 22px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+}
+
+.category-products:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(37, 99, 235, 0.15);
+}
+
+.category-products img {
+  width: 75%;
+  height: 190px;
+  object-fit: cover;
+  margin: 12px 0px;
+  transition: transform 0.5s ease;
+}
+
+.category-products:hover img {
+  transform: scale(1.08);
+}
+
+.category-products h5 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #111827;
+  margin-top: 22px;
+}
+
+.category-products p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 10px 0 25px;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1024px) {
+  .category-container {
+    padding: 60px 5%;
+  }
+
+  .category-products img {
+    height: 200px;
+  }
+
+  .category-products h5 {
+    font-size: 1.15rem;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+  .category-container {
+    padding: 50px 20px;
+  }
+
+  .categories-section {
+    margin-top: 40px;
+  }
+
+  .category-products {
+    border-radius: 18px;
+  }
+
+  .category-products img {
+    height: 180px;
+  }
+
+  .category-products h5 {
+    font-size: 1.1rem;
+    margin-top: 18px;
+  }
+
+  .category-products p {
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+  }
+}
+
+/* ---------- Small Mobile ---------- */
+
+@media (max-width: 480px) {
+  .category-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .category-products img {
+    height: 170px;
+  }
+
+  .category-products h5 {
+    font-size: 1rem;
+  }
+
+  .category-products p {
+    font-size: 0.85rem;
+  }
+}
