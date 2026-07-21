@@ -1,55 +1,155 @@
 import "./DealOfDay.css";
-import Grid from "@mui/material/Grid";
-import electronicsImg from "../../../assets/categories/laptop-category.png";
-import headhonesImg from "../../../assets/categories/headphone-category.png";
-import smarthomeImg from "../../../assets/categories/smarthome-category.png";
-import fashionImg from "../../../assets/categories/tshirt-category.png";
+import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
+import "@leenguyen/react-flip-clock-countdown/dist/index.css";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
+
+// images
+import playStation from "../../../assets/deals/playstation-deal.png";
+import laptop from "../../../assets/deals/laptop-deal.png";
+import analogWatch from "../../../assets/deals/analog-watch-deal.png";
+import earbuds from "../../../assets/deals/earbuds-deal.png";
+import iphone from "../../../assets/deals/iphone-deal.png";
+import mouse from "../../../assets/deals/mouse-deal.png";
+import powerBank from "../../../assets/deals/powerbank-deal.png";
+import tshirt from "../../../assets/deals/tshirt-deal.png";
 
 function DealOfDay() {
-  const category = [
+  const Deals = [
     {
-      product_img: electronicsImg,
-      title: "Electronics",
-      subtitle: "1200+ Products",
+      deal_img: playStation,
+      deal_name: "Sony PlayStation VR2 (PlayStation 5)",
+      rating: "4.8(1200)",
+      price: "89,000",
+      pdrop: "1,00,000",
     },
     {
-      product_img: headhonesImg,
-      title: "Headphones",
-      subtitle: "850+ Products",
+      deal_img: laptop,
+      deal_name: "Acer Smartchoice Aspire One",
+      rating: "5.8(1000)",
+      price: "95,000",
+      pdrop: "1,20,000",
     },
     {
-      product_img: smarthomeImg,
-      title: "Smart Home",
-      subtitle: "500+ Products",
+      deal_img: analogWatch,
+      deal_name: "Paris Bercy Collection Modern Chronograph Watch",
+      rating: "3.6(1500)",
+      price: "1,999",
+      pdrop: "3,000",
     },
     {
-      product_img: fashionImg,
-      title: "Fashion",
-      subtitle: "800+ Fashions",
+      deal_img: earbuds,
+      deal_name: "TWS Earbuds up to 54 Hours Playback",
+      rating: "4.8(500)",
+      price: "999",
+      pdrop: "1500",
+    },
+    {
+      deal_img: iphone,
+      deal_name: "iPhone Air 1 TB: Thinnest iPhone Ever",
+      rating: "5.8(1200)",
+      price: "100,000",
+      pdrop: "1,75,000",
+    },
+    {
+      deal_img: mouse,
+      deal_name: "Logitech MX Master 3S Bluetooth Edition Wireless Mouse",
+      rating: "2.8(1500)",
+      price: "499",
+      pdrop: "999",
+    },
+    {
+      deal_img: powerBank,
+      deal_name: "Amazon Basics 20000 mAh Power Bank",
+      rating: "3.8(1200)",
+      price: "800",
+      pdrop: "1200",
+    },
+    {
+      deal_img: tshirt,
+      deal_name: "Men's Anti-Stain Casual Solid Polo T-Shirt, Anti-Odor",
+      rating: "4.8(1200)",
+      price: "699",
+      pdrop: "1,200",
     },
   ];
 
+  const autoplay = useRef(
+    Autoplay({
+      delay: 1500,
+      stopOnInteraction: false,
+      stopOnMouseEnter: false,
+    }),
+  );
+
+  const [emblaRef] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      slidesToScroll: 1,
+    },
+    [autoplay.current],
+  );
+
   return (
     <>
-      <div className="category-container">
-        <h1>Shop By Category</h1>
+      <div className="deal-header">
+        <div className="deal-left">
+          <h2>Deal Of The Day⚡</h2>
+        </div>
 
-        <div className="categories-section">
-          <Grid container spacing={5}>
-            {category.map((items, index) => {
+        <div className="deal-right">
+          <div className="deal-timer">
+            <span>Ends In</span>
+
+            <FlipClockCountdown
+              className="timer"
+              to={new Date().getTime() + 24 * 3600 * 1000 + 5000}
+            />
+          </div>
+
+          <button className="view-btn">
+            View All Collections
+            <KeyboardDoubleArrowRightIcon />
+          </button>
+        </div>
+      </div>
+
+      <div className="embla">
+        <div className="embla__viewport" ref={emblaRef}>
+          <div className="embla__container">
+            {Deals.map((deal, index) => {
               return (
-                <Grid size={{ xs: 12, sm: 6, md: 3, lg: 3 }}>
-                  <div className="category-products">
-                    <img src={items.product_img} />
+                <div className="embla__slide" key={index}>
+                  <div className="cards-container">
+                    <img src={deal.deal_img} />
 
-                    <h5>{items.title}</h5>
+                    <h5>{deal.deal_name}</h5>
 
-                    <p>{items.subtitle}</p>
+                    <p className="deal-rating">⭐{deal.rating}</p>
+
+                    <p className="deal-price">
+                      ₹{deal.price}
+                      <span className="price-drop">
+                        <del>{deal.pdrop}</del>
+                      </span>
+                    </p>
+
+                    <div className="deal-btns">
+                      <button className="deal-cart">Add To Cart</button>
+                      <button className="deal-whitelist">
+                        <FavoriteBorderIcon />
+                      </button>
+                    </div>
                   </div>
-                </Grid>
+                </div>
               );
             })}
-          </Grid>
+          </div>
         </div>
       </div>
     </>

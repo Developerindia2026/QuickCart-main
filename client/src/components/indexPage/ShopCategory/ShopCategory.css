@@ -15,7 +15,7 @@
 
 .category-container h1 {
   text-align: start;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: 2rem;
   font-weight: 700;
   color: #111827;
   margin-bottom: 15px;
@@ -53,8 +53,8 @@
 }
 
 .category-products img {
-  width: 75%;
-  height: 190px;
+  width: 70%;
+  height: 180px;
   object-fit: cover;
   margin: 12px 0px;
   transition: transform 0.5s ease;
@@ -65,7 +65,7 @@
 }
 
 .category-products h5 {
-  font-size: 1.3rem;
+  font-size: 1.02rem;
   font-weight: 600;
   color: #111827;
   margin-top: 22px;
@@ -74,7 +74,7 @@
 .category-products p {
   font-size: 0.95rem;
   color: #6b7280;
-  margin: 10px 0 25px;
+  margin: 15px 5px
 }
 
 /* ---------- Tablet ---------- */

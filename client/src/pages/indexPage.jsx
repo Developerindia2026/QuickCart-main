@@ -7,6 +7,7 @@ function IndexPage() {
         <>  
         <Hero/>
         <ShopCategory/>
+        <DealOfDay/>
         </>
     )
 };
