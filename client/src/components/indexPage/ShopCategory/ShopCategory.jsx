@@ -35,10 +35,10 @@ function ShopCategory() {
         <h1>Shop By Category</h1>
 
         <div className="categories-section">
-          <Grid container spacing={5}>
+          <Grid container spacing={4}>
             {category.map((items, index) => {
               return (
-                <Grid size={{ xs: 12, sm: 6, md: 3, lg: 3 }}>
+                <Grid size={{ xs: 6, sm: 6, md: 3, lg: 3 }}>
                   <div className="category-products">
                     <img src={items.product_img} />
 

@@ -4,17 +4,19 @@ import DealOfDay from "../components/indexPage/DealOfDay/DealOfDay";
 import WhyChooseUs from "../components/indexPage/WhyChooseUs/WhyChooseUs";
 import TopPicks from "../components/indexPage/TopPicks/TopPicks";
 import Advertisment from "../components/indexPage/Advertisment/Advertisment";
+import Brands from "../components/indexPage/Brands/Brands";
 function IndexPage() {
-    return (
-        <>  
-        <Hero/>
-        <ShopCategory/>
-        <DealOfDay/>
-        <WhyChooseUs/>
-        <TopPicks/>
-        <Advertisment/>
-        </>
-    )
-};
+  return (
+    <>
+      <Hero />
+      <ShopCategory />
+      <DealOfDay />
+      <WhyChooseUs />
+      <TopPicks />
+      <Advertisment />
+      <Brands />
+    </>
+  );
+}
 
 export default IndexPage;

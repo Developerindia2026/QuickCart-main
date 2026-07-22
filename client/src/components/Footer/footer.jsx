@@ -1,12 +1,13 @@
 import logo from "../../assets/logo.svg";
 import "./footer.css"
+import whiteLogo from "../../assets/logo_white.svg";
 
 function Footer() {
   return (
     <>
       <div className="footer-container">
         <div className="left-container">
-          <img src={logo} alt="Logo" className="footer-logo" />
+          <img src={whiteLogo} alt="Logo" className="footer-logo" />
           <p className="left-para">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta
             minus quaerat a deserunt labore nesciunt incidunt minima tenetur

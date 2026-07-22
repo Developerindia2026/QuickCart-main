@@ -1,464 +1,396 @@
 /* ==========================================
-   Deal Of The Day Header
-========================================== */
-
-.deal-header{
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:28px 55px;
-    margin:40px 0;
-    gap:30px;
-    flex-wrap:wrap;
+   GLOBAL & SECTION WRAPPER
+   ========================================== */
+.deal-section {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #0f172a;
+  box-sizing: border-box;
 }
 
-/* =======================
-        Left
-======================= */
-
-.deal-left h2{
-    margin:0;
-    font-size:2.3rem;
-    font-weight:700;
-    color:#1f2937;
-    letter-spacing:-.5px;
-    position:relative;
+/* ==========================================
+   HEADER SECTION
+   ========================================== */
+.deal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
 }
 
-.deal-left h2::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-10px;
-    width:70px;
-    height:4px;
-    border-radius:20px;
-    background:linear-gradient(90deg,#7c3aed,#9333ea);
+.deal-left {
+  max-width: 550px;
 }
 
-/* =======================
-        Right
-======================= */
-
-.deal-right{
-    margin-left:auto;
-    display:flex;
-    align-items:center;
-    gap:24px;
-    flex-wrap:wrap;
+.deal-subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ef4444;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
 }
 
-/* =======================
-        Timer Card
-======================= */
-
-.deal-timer{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    padding:12px 18px;
-    border-radius:18px;
-    background:#ffffff;
-    border:1px solid #ececec;
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.06);
+.deal-subtitle svg {
+  font-size: 1.2rem;
 }
 
-.deal-timer span{
-    font-size:.95rem;
-    font-weight:600;
-    color:#6b7280;
-    white-space:nowrap;
+.deal-left h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.5rem 0;
 }
 
-/* =======================
-      Flip Clock
-======================= */
-
-.timer{
-    display:flex;
-    align-items:center;
+.deal-left p {
+  font-size: 0.975rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
 }
 
-
-
-/* Flip Clock Theme */
-
-.flip-clock{
-    --fcc-background:#111827;
-    --fcc-digit-color:#fff;
-    --fcc-divider-color:#8b5cf6;
-    --fcc-label-color:#6b7280;
-    --fcc-spacing:8px;
+.deal-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-/* =======================
-      Button
-======================= */
-
-.view-btn{
-    display:flex;
-    align-items:center;
-    gap:8px;
-
-    padding:14px 24px;
-
-    background-color: #111827;
-
-    color:#fff;
-    font-size:.95rem;
-    font-weight:600;
-
-    border:none;
-    outline:none;
-    border-radius:50px;
-
-    cursor:pointer;
-
-    transition:.35s ease;
-
-    box-shadow:
-        0 12px 25px rgba(124,58,237,.28);
+.deal-timer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.view-btn svg{
-    font-size:1.35rem;
-    transition:.35s;
+.timer-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
 }
 
-.view-btn:hover{
-    transform:translateY(-3px);
-    box-shadow:
-        0 18px 35px rgba(4, 37, 155, 0.35);
+/* FlipClock Custom Styles */
+.timer {
+  --fcc-flip-duration: 0.5s;
+  --fcc-digit-block-width: 24px;
+  --fcc-digit-block-height: 36px;
+  --fcc-digit-font-size: 1.1rem;
+  --fcc-digit-color: #ffffff;
+  --fcc-background-color: #0f172a;
+  --fcc-divider-color: rgba(255, 255, 255, 0.2);
+  --fcc-label-color: #64748b;
+  --fcc-label-font-size: 0.65rem;
 }
 
-.view-btn:hover svg{
-    transform:translateX(5px);
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: transparent;
+  color: #0f172a;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* =======================
-      Tablet
-======================= */
-
-@media(max-width:992px){
-
-    .deal-header{
-        padding:25px;
-        justify-content:center;
-        text-align:center;
-    }
-
-    .deal-left{
-        width:100%;
-    }
-
-    .deal-left h2{
-        font-size:2rem;
-    }
-
-    .deal-left h2::after{
-        left:50%;
-        transform:translateX(-50%);
-    }
-
-    .deal-right{
-        margin-left:0;
-        justify-content:center;
-    }
-
+.view-btn:hover {
+  background-color: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
 }
 
-/* =======================
-      Mobile
-======================= */
-
-@media(max-width:768px){
-
-    .deal-header{
-        padding:18px;
-        gap:20px;
-    }
-
-    .deal-left h2{
-        font-size:1.6rem;
-    }
-
-    .deal-right{
-        width:100%;
-        flex-direction:column;
-        align-items:stretch;
-        gap:15px;
-    }
-
-    .deal-timer{
-        justify-content:center;
-        flex-wrap:wrap;
-    }
-
-    .view-btn{
-        justify-content:center;
-        width:100%;
-    }
-
-      .deal-timer{
-      width:100%;
-      justify-content:center;
-      padding:10px;
-      overflow-x:auto;
-  }
-
-  .timer{
-      transform:scale(0.8);
-      transform-origin:center;
-      justify-content: center;
-  }
-
-  .flip-clock{
-      --fcc-spacing:4px;
-  }
-
+.view-btn svg {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
 }
 
-/* =======================
-    Small Phones
-======================= */
-
-@media(max-width:480px){
-
-    .deal-left h2{
-        font-size:1.35rem;
-    }
-
-    .deal-timer{
-        padding:14px;
-    }
-
-        .timer{
-        transform:scale(0.68);
-    }
-
-    .flip-clock{
-        --fcc-spacing:2px;
-    }
-
-
+.view-btn:hover svg {
+  transform: translateX(3px);
 }
 
-
-
+/* ==========================================
+   EMBLA SLIDER ENGINE
+   ========================================== */
+.embla {
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 5px; /* Allowance for card shadows */
+  margin: -10px -5px;
+}
 
 .embla__viewport {
   overflow: hidden;
+  width: 100%;
+  border-radius: 16px;
 }
 
 .embla__container {
   display: flex;
-  touch-action: pan-y pinch-zoom;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-left: -1.25rem; /* Matches slide left padding */
 }
 
+/* Base Slide sizing: Desktop 4 cards view */
 .embla__slide {
-  flex: 0 0 25%;
+  position: relative;
+  flex: 0 0 25%; /* 4 Cards per view */
   min-width: 0;
+  padding-left: 1.25rem; /* Gap between cards */
 }
 
-@media (max-width: 992px) {
+/* ==========================================
+   PREMIUM CARD DESIGN
+   ========================================== */
+.deal-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 20px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+}
+
+.deal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 
+              0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  border-color: #e2e8f0;
+}
+
+/* Discount Badge */
+.discount-badge {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* Wishlist Button */
+.wishlist-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  border: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.2s ease;
+}
+
+.wishlist-btn:hover {
+  background: #ffffff;
+  color: #ef4444;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-btn svg {
+  font-size: 1.15rem;
+}
+
+/* Card Image Wrapper */
+.deal-image {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+  border-radius: 14px;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.deal-image img {
+  max-width: 85%;
+  max-height: 85%;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.deal-card:hover .deal-image img {
+  transform: scale(1.08);
+}
+
+/* Card Content Details */
+.deal-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.deal-stock {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #f59e0b;
+  margin-bottom: 0.4rem;
+}
+
+.deal-content h3 {
+  font-size: 0.975rem;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.4;
+  margin: 0 0 0.5rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.8em; /* Ensures title area height alignment across cards */
+}
+
+.deal-rating {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 1rem;
+}
+
+.price-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+
+.current-price {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.old-price {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+/* Add To Cart Button */
+.deal-cart-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.deal-cart-btn:hover {
+  background-color: #2563eb;
+}
+
+.deal-cart-btn:active {
+  transform: scale(0.98);
+}
+
+.deal-cart-btn svg {
+  font-size: 1.1rem;
+}
+
+/* ==========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================== */
+
+/* Laptops (3 Cards per view) */
+@media (max-width: 1200px) {
+  .embla__slide {
+    flex: 0 0 33.3333%;
+  }
+}
+
+/* Tablets (2 Cards per view) */
+@media (max-width: 868px) {
+  .deal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .deal-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .embla__slide {
     flex: 0 0 50%;
   }
 }
 
-@media (max-width: 600px) {
-  .embla__slide {
-    flex: 0 0 100%;
-  }
-}
-
-
-/* ============================
-   DEAL CARD
-============================ */
-
-.cards-container {
-  width: 100%;
-  background: #fff;
-  border: 1px solid #ececec;
-  border-radius: 18px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.35s ease;
-  cursor: pointer;
-  overflow: hidden;
-  box-sizing: border-box;
-  height: 100%;
-  gap: -20px;
-}
-
-.cards-container:hover {
-  transform: translateY(-8px);
-  border-color: #dcdcdc;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* ============================
-   PRODUCT IMAGE
-============================ */
-
-.cards-container img {
-  width: 100%;
-  height: 240px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 18px;
-  transition: transform 0.4s ease;
-}
-
-.cards-container:hover img {
-  transform: scale(1.08);
-}
-
-/* ============================
-   PRODUCT TITLE
-============================ */
-
-.cards-container h5 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 10px;
-  line-height: 1.5;
-  min-height: 48px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* ============================
-   RATING
-============================ */
-
-.deal-rating {
-  color: #f59e0b;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-/* ============================
-   PRICE
-============================ */
-
-.deal-price {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: #930606;
-  margin-bottom: 18px;
-}
-
-.price-drop {
-  margin-left: 30px;
-  margin-bottom: 18px;
-  color: black;
-  font-weight: 600;
-}
-
-/* ============================
-   BUTTONS
-============================ */
-
-.deal-btns {
-  display: flex;
-  gap: 12px;
-  margin-top: auto;
-}
-
-.deal-cart {
-  flex: 1;
-  height: 46px;
-  border: none;
-  border-radius: 12px;
-  background: #111827;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.deal-cart:hover {
-  background: #2563eb;
-}
-
-.deal-whitelist {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.deal-whitelist:hover {
-  background: #fff5f5;
-  color: #ef4444;
-  border-color: #ef4444;
-}
-
-/* ============================
-   TABLET
-============================ */
-
-@media (max-width: 992px) {
-  .cards-container {
-    padding: 16px;
-  }
-
-  .cards-container img {
-    height: 200px;
-  }
-
-  .cards-container h5 {
-    font-size: 0.95rem;
-  }
-
-  .deal-price {
-    font-size: 1.3rem;
-  }
-}
-
-/* ============================
-   MOBILE
-============================ */
-
+/* Mobile Devices (1 Card per view with subtle glimpse of next) */
 @media (max-width: 576px) {
-  .cards-container {
-    border-radius: 14px;
-    padding: 14px;
+  .deal-section {
+    padding: 2rem 1rem;
   }
 
-  .cards-container img {
-    height: 180px;
+  .deal-left h2 {
+    font-size: 1.75rem;
   }
 
-  .cards-container h5 {
-    font-size: 0.9rem;
+  .deal-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
   }
 
-  .deal-price {
-    font-size: 1.15rem;
+  .view-btn {
+    width: 100%;
+    justify-content: center;
   }
 
-  .deal-cart,
-  .deal-whitelist {
-    height: 42px;
+  .embla__slide {
+    flex: 0 0 88%; /* Shows 1 card prominently with a peek of the next slide */
+    padding-left: 0.85rem;
   }
 
-  .deal-whitelist {
-    width: 42px;
+  .embla__container {
+    margin-left: -0.85rem;
   }
 }

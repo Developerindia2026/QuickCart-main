@@ -1,0 +1,227 @@
+/* ==========================================================
+   BRANDS SECTION
+========================================================== */
+
+.brands-container {
+  width: 100%;
+  padding: 5rem 6%;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.brand-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.brand-content p {
+  position: relative;
+  font-size: clamp(1.4rem, 2vw, 2.3rem);
+  font-weight: 700;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+.brand-content p::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+}
+
+
+/* ==========================================================
+   EMBLA
+========================================================== */
+
+.embla {
+  width: 100%;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 20%;
+  min-width: 0;
+  padding: 12px;
+}
+
+
+/* ==========================================================
+   BRAND CARD
+========================================================== */
+
+.brand-logo {
+  height: 140px;
+  background: #fff;
+  border: 1px solid #edf2f7;
+  border-radius: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all .35s ease;
+
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, .05),
+    0 2px 6px rgba(15, 23, 42, .04);
+}
+
+/* .brand-logo:hover {
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 18px 40px rgba(37, 99, 235, .12),
+    0 8px 18px rgba(15, 23, 42, .08);
+
+  border-color: rgba(37, 99, 235, .18);
+} */
+
+.brand-logo img {
+  width: 72%;
+  max-height: 70px;
+  object-fit: contain;
+
+  /* filter: grayscale(100%); */
+  opacity: .75;
+
+  transition: all .35s ease;
+}
+
+.brand-logo:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+
+/* ==========================================================
+   LARGE DESKTOP
+========================================================== */
+
+@media (max-width: 1400px) {
+
+  .embla__slide {
+    flex: 0 0 25%;
+  }
+
+}
+
+
+/* ==========================================================
+   LAPTOP
+========================================================== */
+
+@media (max-width: 1200px) {
+
+  .brands-container {
+    padding: 4rem 5%;
+  }
+
+  .embla__slide {
+    flex: 0 0 25%;
+  }
+
+  .brand-logo {
+    height: 130px;
+  }
+
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 992px) {
+
+  .embla__slide {
+    flex: 0 0 33.333%;
+  }
+
+  .brand-logo {
+    height: 120px;
+  }
+
+  .brand-logo img {
+    width: 70%;
+  }
+
+}
+
+
+/* ==========================================================
+   SMALL TABLET
+========================================================== */
+
+@media (max-width: 768px) {
+
+  .brands-container {
+    padding: 3.5rem 4%;
+  }
+
+  .brand-content {
+    margin-bottom: 2rem;
+  }
+
+  .brand-content p {
+    font-size: 1.5rem;
+  }
+
+  .embla__slide {
+    flex: 0 0 50%;
+  }
+
+  .brand-logo {
+    height: 110px;
+    border-radius: 16px;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 480px) {
+
+  .brands-container {
+    padding: 3rem 1rem;
+  }
+
+  .brand-content p {
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+  }
+
+  .embla__slide {
+    flex: 0 0 100%;
+    padding: 8px;
+  }
+
+  .brand-logo {
+    height: 95px;
+  }
+
+  .brand-logo img {
+    width: 65%;
+    max-height: 50px;
+  }
+
+}

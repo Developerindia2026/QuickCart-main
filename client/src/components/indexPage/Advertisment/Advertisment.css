@@ -1,0 +1,333 @@
+/* ==========================================================
+   Advertisement Section
+========================================================== */
+
+.advert-embla {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin: 4rem 0;
+}
+
+.advert-embla__viewport {
+  overflow: hidden;
+  border-radius: 26px;
+}
+
+.advert-embla__container {
+  display: flex;
+}
+
+.advert-embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding: 0.3rem;
+}
+
+/* ==========================================================
+   Advertisement Card
+========================================================== */
+
+.advertisment-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 420px;
+  padding: 6px 100px;
+  border-radius: 26px;
+  margin: 0px 40px;
+  background:
+    radial-gradient(circle at top right, #60a5fa20, transparent 45%),
+    linear-gradient(135deg, #0f172a, #1e293b);
+
+  overflow: hidden;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+
+  transition: 0.45s ease;
+}
+
+.advertisment-container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2);
+}
+
+/* decorative circles */
+
+.advertisment-container::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  top: -80px;
+  right: -80px;
+}
+
+.advertisment-container::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.15);
+  bottom: -70px;
+  left: -50px;
+}
+
+/* ==========================================================
+   Left Content
+========================================================== */
+
+.upside {
+  position: relative;
+  z-index: 2;
+  width: 50%;
+}
+
+.upside h5 {
+  font-size: 1rem;
+  color: #60a5fa;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.upside p {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1.15;
+  max-width: 480px;
+  margin-bottom: 35px;
+}
+
+.upside button {
+  padding: 15px 36px;
+  border: none;
+  border-radius: 12px;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.35s;
+}
+
+.upside button:hover {
+  background: #1d4ed8;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.45);
+}
+
+/* ==========================================================
+   Image Section
+========================================================== */
+
+.image-section {
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.image-section img {
+  width: 100%;
+  max-width: 430px;
+  object-fit: contain;
+
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.35));
+
+  transition: 0.5s;
+}
+
+.advertisment-container:hover .image-section img {
+  transform: scale(1.05) rotate(-3deg);
+}
+
+/* ==========================================================
+   Arrow Buttons
+========================================================== */
+
+.embla__prev,
+.embla__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 52px;
+  height: 52px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+  z-index: 20;
+}
+
+.embla__prev {
+  left: 22px;
+}
+
+.embla__next {
+  right: 22px;
+}
+
+.embla__prev svg,
+.embla__next svg {
+  color: #111827;
+  font-size: 22px;
+}
+
+.embla__prev:hover,
+.embla__next:hover {
+  background: #2563eb;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.embla__prev:hover svg,
+.embla__next:hover svg {
+  color: white;
+}
+
+/* ==========================================================
+   Large Laptop
+========================================================== */
+
+@media (max-width: 1200px) {
+  .advertisment-container {
+    padding: 50px;
+    min-height: 380px;
+  }
+
+  .upside p {
+    font-size: 2.5rem;
+  }
+
+  .image-section img {
+    max-width: 360px;
+  }
+}
+
+/* ==========================================================
+   Tablet
+========================================================== */
+
+@media (max-width: 992px) {
+  .advertisment-container {
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+    gap: 40px;
+
+    padding: 45px 35px;
+  }
+
+  .upside {
+    width: 100%;
+  }
+
+  .image-section {
+    width: 100%;
+  }
+
+  .image-section img {
+    max-width: 320px;
+  }
+
+  .upside p {
+    max-width: 100%;
+    font-size: 2.3rem;
+  }
+}
+
+/* ==========================================================
+   Mobile
+========================================================== */
+
+@media (max-width: 768px) {
+  .embla {
+    margin: 2.5rem 0;
+  }
+
+  .advertisment-container {
+    padding: 35px 22px;
+    min-height: auto;
+    border-radius: 20px;
+  }
+
+  .upside h5 {
+    font-size: 0.9rem;
+  }
+
+  .upside p {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  .upside button {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .image-section img {
+    max-width: 240px;
+  }
+
+  .embla__prev,
+  .embla__next {
+    width: 42px;
+    height: 42px;
+  }
+
+  .embla__prev {
+    left: 10px;
+  }
+
+  .embla__next {
+    right: 10px;
+  }
+}
+
+/* ==========================================================
+   Small Phones
+========================================================== */
+
+@media (max-width: 480px) {
+  .advertisment-container {
+    padding: 28px 18px;
+  }
+
+  .upside p {
+    font-size: 1.5rem;
+  }
+
+  .image-section img {
+    max-width: 190px;
+  }
+
+  .embla__prev,
+  .embla__next {
+    display: none;
+  }
+}
