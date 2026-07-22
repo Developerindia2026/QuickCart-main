@@ -316,6 +316,8 @@
 @media (max-width: 480px) {
   .advertisment-container {
     padding: 28px 18px;
+    width: 85%;
+    margin-left: 20px;
   }
 
   .upside p {
