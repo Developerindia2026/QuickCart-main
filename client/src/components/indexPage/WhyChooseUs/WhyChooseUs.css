@@ -1,0 +1,337 @@
+/* ==========================================================================
+   Root Variables
+   ========================================================================== */
+
+:root {
+  --primary-color: #0f172a;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-light: #eff6ff;
+
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+
+  --bg-card: #ffffff;
+  --bg-section: #f8fafc;
+
+  --shadow-sm: 0 4px 6px -1px rgba(0,0,0,.05),
+               0 2px 4px -2px rgba(0,0,0,.05);
+
+  --shadow-hover: 0 18px 30px rgba(37,99,235,.15);
+
+  --transition: .35s ease;
+
+  --radius-lg:20px;
+}
+
+/* ==========================================================================
+   SECTION
+   ========================================================================== */
+
+.chooseus-container{
+    width:100%;
+    padding:80px 24px;
+    background:var(--bg-section);
+}
+
+.chooseus-container h1{
+
+    text-align:center;
+
+    font-size:2.5rem;
+
+    font-weight:800;
+
+    color:var(--primary-color);
+
+    margin-bottom:55px;
+
+    position:relative;
+}
+
+.chooseus-container h1::after{
+
+    content:"";
+
+    display:block;
+
+    width:65px;
+
+    height:4px;
+
+    margin:14px auto 0;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        90deg,
+        var(--accent-color),
+        #60a5fa
+    );
+}
+
+/* ==========================================================================
+   GRID
+   ========================================================================== */
+
+.chooseus-cards{
+
+    max-width:1300px;
+
+    margin:auto;
+}
+
+.chooseus-cards .MuiGrid-container{
+
+    justify-content:center;
+
+    row-gap:35px;
+
+    column-gap:90px;
+    /* margin-left: -12px;  */
+}
+
+/* ==========================================================================
+   CARD
+   ========================================================================== */
+
+.choose-card{
+
+    background:var(--bg-card);
+
+    border:1px solid #e5e7eb;
+
+    border-radius:20px;
+
+    padding:20px 24px;
+
+    text-align:center;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:100%;
+
+    width:380px;
+
+    max-width:280px;
+
+    margin:auto;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+    cursor:pointer;
+}
+
+.choose-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:var(--shadow-hover);
+
+    border-color:#bfdbfe;
+}
+
+/* ==========================================================================
+   ICON
+   ========================================================================== */
+
+.choose-icon{
+
+    font-size:3rem !important;
+
+    color:var(--accent-color);
+
+    background:var(--accent-light);
+
+    padding:16px;
+
+    border-radius:50%;
+
+    margin-bottom:12px;
+
+    transition:var(--transition);
+
+    box-sizing:content-box;
+}
+
+.choose-card:hover .choose-icon{
+
+    background:var(--accent-color);
+
+    color:#fff;
+
+    transform:scale(1.08) rotate(-4deg);
+}
+
+/* ==========================================================================
+   CONTENT
+   ========================================================================== */
+
+.choose-content h3{
+
+    font-size:1.25rem;
+
+    color:var(--primary-color);
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+    line-height:1.35;
+}
+
+.choose-content p{
+
+    font-size:.95rem;
+
+    color:var(--text-muted);
+
+    line-height:1.5;
+
+    margin:0;
+}
+
+/* ==========================================================================
+   LARGE TABLETS
+   ========================================================================== */
+
+@media(max-width:1200px){
+
+    .chooseus-container{
+
+        padding:70px 24px;
+    }
+
+    .chooseus-cards .MuiGrid-container{
+
+        column-gap:25px;
+
+        row-gap:25px;
+    }
+
+    .choose-card{
+
+        max-width:260px;
+    }
+
+}
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media(max-width:992px){
+
+    .chooseus-container{
+
+        padding:60px 20px;
+    }
+
+    .chooseus-container h1{
+
+        font-size:2.1rem;
+    }
+
+    .choose-card{
+
+        max-width:320px;
+    }
+
+}
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media(max-width:768px){
+
+    .chooseus-container{
+
+        padding:50px 18px;
+    }
+
+    .chooseus-container h1{
+
+        font-size:1.9rem;
+
+        margin-bottom:40px;
+    }
+
+    .chooseus-cards .MuiGrid-container{
+
+        row-gap:20px;
+    }
+
+    .choose-card{
+
+        max-width:100%;
+
+        padding:24px 18px;
+    }
+
+    .choose-icon{
+
+        font-size:2.5rem !important;
+
+        padding:14px;
+    }
+
+    .choose-content h3{
+
+        font-size:1.15rem;
+    }
+
+    .choose-content p{
+
+        font-size:.9rem;
+    }
+
+}
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+@media(max-width:480px){
+
+    .chooseus-container{
+
+        padding:40px 15px;
+    }
+
+    .chooseus-container h1{
+
+        font-size:1.6rem;
+    }
+
+    .choose-card{
+
+        padding:20px 16px;
+    }
+
+    .choose-icon{
+
+        font-size:2.2rem !important;
+
+        padding:12px;
+    }
+
+    .choose-content h3{
+
+        font-size:1rem;
+    }
+
+    .choose-content p{
+
+        font-size:.85rem;
+    }
+
+}
