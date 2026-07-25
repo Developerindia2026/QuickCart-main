@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 let app = express();
 const categoryRoute = require("./routes/categoryPage");
-let port = 3000 || process.env.URL;
+const port = process.env.PORT || 3000;
 
 // DATABASE
 main().catch((err) => console.log(err));
