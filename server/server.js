@@ -37,5 +37,5 @@ app.use("/category", categoryRoute);
 
 // PORT
 app.listen(port, () => {
-  console.log(`working on ${port} PORT`);
+  console.log("working on bakcend");
 });

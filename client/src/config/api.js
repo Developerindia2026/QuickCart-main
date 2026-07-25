@@ -1,3 +1,3 @@
-const API = "https://quickcart-main-uk3i.onrender.com";
+const API = "https://quickcart-main-layt.onrender.com/";
 
 export default API;

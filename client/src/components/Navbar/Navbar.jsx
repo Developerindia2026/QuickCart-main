@@ -22,14 +22,9 @@ function Navbar() {
       =========================== */}
 
       <nav className="navbar">
-
         {/* Logo */}
 
-        <Link
-          to="/"
-          className="nav-logo"
-          onClick={closeMenu}
-        >
+        <Link to="/" className="nav-logo" onClick={closeMenu}>
           <img src={logo} alt="NexCart Logo" />
         </Link>
 
@@ -37,7 +32,6 @@ function Navbar() {
 
         <div className="items">
           <ul className="nav-links">
-
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -53,14 +47,12 @@ function Navbar() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
-
           </ul>
         </div>
 
         {/* Desktop Buttons */}
 
         <div className="btn-section">
-
           <button className="btn-like">
             <FavoriteBorderIcon />
           </button>
@@ -70,99 +62,65 @@ function Navbar() {
           </button>
 
           <button className="btn-account">
-            <AccountCircleIcon />
-            <span>Account</span>
+            <Link to="/signup">
+                <AccountCircleIcon />
+                <span>My Account</span>
+              </Link>
           </button>
-
         </div>
 
         {/* Hamburger */}
 
-        <button
-          className="hamburger-menu"
-          onClick={() => setMobileMenu(true)}
-        >
+        <button className="hamburger-menu" onClick={() => setMobileMenu(true)}>
           <MenuIcon />
         </button>
-
       </nav>
 
       {/* ===========================
             MOBILE MENU OVERLAY
       =========================== */}
 
-      <div
-        className={`mobile-menu ${
-          mobileMenu ? "active" : ""
-        }`}
-      >
-
+      <div className={`mobile-menu ${mobileMenu ? "active" : ""}`}>
         {/* Drawer */}
 
         <div className="mobile-drawer">
-
           {/* Header */}
 
           <div className="mobile-header">
-
-            <Link
-              to="/"
-              className="mobile-logo"
-              onClick={closeMenu}
-            >
-              <img
-                src={logo}
-                alt="NexCart Logo"
-              />
+            <Link to="/" className="mobile-logo" onClick={closeMenu}>
+              <img src={logo} alt="NexCart Logo" />
             </Link>
 
-            <button
-              className="close-menu"
-              onClick={closeMenu}
-            >
+            <button className="close-menu" onClick={closeMenu}>
               <CloseIcon />
             </button>
-
           </div>
 
           {/* Navigation */}
 
           <div className="mobile-items">
-
             <ul>
-
               <li onClick={closeMenu}>
-                <Link to="/">
-                  Home
-                </Link>
+                <Link to="/">Home</Link>
               </li>
 
               <li onClick={closeMenu}>
-                <Link to="/products">
-                  Products
-                </Link>
+                <Link to="/products">Products</Link>
               </li>
 
               <li onClick={closeMenu}>
-                <Link to="/about">
-                  About
-                </Link>
+                <Link to="/about">About</Link>
               </li>
 
               <li onClick={closeMenu}>
-                <Link to="/contact">
-                  Contact
-                </Link>
+                <Link to="/contact">Contact</Link>
               </li>
-
             </ul>
-
           </div>
 
           {/* Bottom Section */}
 
           <div className="mobile-icons">
-
             <button className="mobile-btn-like">
               <FavoriteBorderIcon />
               <span>Wishlist</span>
@@ -174,14 +132,13 @@ function Navbar() {
             </button>
 
             <button className="mobile-btn-account">
-              <AccountCircleIcon />
-              <span>My Account</span>
+              <Link to="/signup">
+                <AccountCircleIcon />
+                <span>My Account</span>
+              </Link>
             </button>
-
           </div>
-
         </div>
-
       </div>
     </>
   );

@@ -125,6 +125,14 @@ button{
     transition:.3s;
 }
 
+.btn-account a {
+    display: flex;
+    align-items: center;
+    gap: 8px;   /* icon aur text ke beech spacing */
+    text-decoration: none;
+    color: inherit;
+}
+
 .btn-account:hover{
     background:#2563eb;
 }
@@ -262,6 +270,14 @@ button{
         display:flex;
     }
 
+    .mobile-btn-account a {
+    display: flex;
+    align-items: center;
+    gap: 8px;   /* icon aur text ke beech spacing */
+    text-decoration: none;
+    color: inherit;
+}
+
 }
 
 @media (max-width:600px){
@@ -279,4 +295,25 @@ button{
         width:100%;
     }
 
+}
+
+@media (max-width: 480px) {
+
+    .mobile-btn-account a {
+    display: flex;
+    align-items: center;
+    gap: 8px;   /* icon aur text ke beech spacing */
+    text-decoration: none;
+    color: inherit;
+}
+}
+
+@media (max-width: 1440px) {
+    .mobile-btn-account a {
+    display: flex;
+    align-items: center;
+    gap: 8px;   /* icon aur text ke beech spacing */
+    text-decoration: none;
+    color: inherit;
+}
 }
