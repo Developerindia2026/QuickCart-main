@@ -17,15 +17,16 @@ async function main() {
 }
 
 // middleware
-app.use(express.urlencoded({ extended: true }));
-app.use("/images", express.static("images"));
-app.use(express.json());
 app.use(
   cors({
     credentials: true,
     origin: ["https://quickcartservices.vercel.app", "http://localhost:5173"],
   }),
 );
+app.use(express.urlencoded({ extended: true }));
+app.use("/images", express.static("images"));
+app.use(express.json());
+
 
 // routes
 app.get("/server", (req, res) => {
