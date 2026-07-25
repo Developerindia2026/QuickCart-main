@@ -1,141 +1,175 @@
 import Grid from "@mui/material/Grid";
-import DiscountIcon from "@mui/icons-material/Discount";
-import ShieldIcon from "@mui/icons-material/Shield";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import DiscountIcon from "@mui/icons-material/DiscountOutlined";
+import ShieldIcon from "@mui/icons-material/ShieldOutlined";
+import LocalShippingIcon from "@mui/icons-material/LocalShippingOutlined";
 import LottieModule from "lottie-react";
-const Lottie = LottieModule.default;
 import animation from "../../../assets/singup-animation.json";
 import "./Signup.css";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
+import InputAdornment from "@mui/material/InputAdornment";
 import { Link } from "react-router-dom";
 
-import Person2Icon from '@mui/icons-material/Person2';
-import EmailIcon from '@mui/icons-material/Email';
-import PasswordIcon from '@mui/icons-material/Password';
+import Person2Icon from "@mui/icons-material/Person2Outlined";
+import EmailIcon from "@mui/icons-material/EmailOutlined";
+import LockIcon from "@mui/icons-material/LockOutlined";
+
+const Lottie = LottieModule.default || LottieModule;
 
 function Signup() {
-  const label = { slotProps: { input: { "aria-label": "Checkbox demo" } } };
-
   return (
-    <>
-      <div className="signup-container">
-        <Grid container spacing={0}>
-          {/* singup design  */}
-          <Grid size={{ xs: 12, md: 6 }}>
-            {/* header  */}
-            <div className="signup-design">
-              <div className="signup-header">
-                <p>WELCOME TO QUICKCART</p>
+    <div className="signup-wrapper">
+      <Grid container className="signup-grid-container">
+        {/* Left Branding Side */}
+        <Grid size={{xs: 12, md: 6}} className="signup-branding-section">
+          <div className="signup-branding-content">
+            <span className="signup-badge">WELCOME TO QUICKCART</span>
 
-                <h1>Create your account</h1>
+            <h1 className="signup-hero-heading">Create your account</h1>
 
-                <p>
-                  Join QuickCart and enjoy the best shopping experience with
-                  exclusive deals, secure payments, and fast delivery.
-                </p>
-              </div>
+            <p className="signup-hero-description">
+              Join QuickCart and enjoy the best shopping experience with exclusive
+              deals, secure payments, and fast delivery.
+            </p>
 
-              {/* icons  */}
-              <div className="signup-icons">
-                <div className="icons-list">
+            {/* Feature List */}
+            <div className="signup-features">
+              <div className="feature-item">
+                <div className="feature-icon">
                   <DiscountIcon />
+                </div>
+                <div>
                   <h5>Exclusive Offers</h5>
                   <p>Access special discounts and members-only deals.</p>
                 </div>
+              </div>
 
-                <div className="icons-list">
+              <div className="feature-item">
+                <div className="feature-icon">
                   <ShieldIcon />
+                </div>
+                <div>
                   <h5>Fast & Secure</h5>
                   <p>Secure payments with quick and reliable delivery.</p>
                 </div>
-
-                <div className="icons-list">
-                  <LocalShippingIcon />
-                  <h5>Easy Returns</h5>
-                  <p>
-                    Hassle-free returns and quick refunds for eligible orders.
-                  </p>
-                </div>
               </div>
 
-              <div className="singup-trust">
-                <p>Trusted by 10,000+ happy customers</p>
+              <div className="feature-item">
+                <div className="feature-icon">
+                  <LocalShippingIcon />
+                </div>
+                <div>
+                  <h5>Easy Returns</h5>
+                  <p>Hassle-free returns and quick refunds for eligible orders.</p>
+                </div>
               </div>
             </div>
 
-            <div className="signup-animation">
+            {/* Animation & Trust Indicator */}
+            <div className="signup-animation-wrapper">
               <Lottie animationData={animation} loop={true} autoPlay={true} />
             </div>
-          </Grid>
 
-          {/* signup form  */}
-          <Grid size={{ xs: 12, md: 6 }}>
-            <div className="singup-form">
-              <div className="singup-container">
-                {/* header  */}
-                <div className="singup-right-header">
-                  <h1>Sign Up</h1>
-                  <p>Create a New Account</p>
-                </div>
-
-                {/* singup-form  */}
-                <form>
-                  {/* full name  */}
-                  <label htmlFor="fullname"><Person2Icon/></label>
-                  <TextField
-                    id="fullname"
-                    label="Enter Your Fullname"
-                    variant="outlined"
-                    name="Fullname"
-                  />
-
-                  {/* email  */}
-                  <label htmlFor="mail"><EmailIcon/></label>
-                  <TextField
-                    id="mail"
-                    label="Enter Your Email Address"
-                    variant="outlined"
-                    name="mail"
-                  />
-
-                  {/* password  */}
-                  <label htmlFor="password"><PasswordIcon/></label>
-                  <TextField
-                    id="password"
-                    label="Enter Your password"
-                    variant="outlined"
-                    name="password"
-                  />
-
-                  {/* confirm password  */}
-                  <label htmlFor="confirmpassword"><PasswordIcon/></label>
-                  <TextField
-                    id="confirmpassword"
-                    label="Please Confirm Your Password"
-                    variant="outlined"
-                    name="confirmPassword"
-                  />
-
-                  <Checkbox {...label} />
-                  <span>
-                    I agree to the Terms of Service and Privacy Policy.
-                  </span>
-
-                  <button>Signup Now</button>
-                </form>
-              </div>
-              <div className="login-container">
-                <p>
-                  Already have an account? &nbsp;
-                  <Link to="/login">Sign In</Link>
-                </p>
-              </div>
+            <div className="signup-trust">
+              <p>Trusted by <span>10,000+</span> happy customers</p>
             </div>
-          </Grid>
+          </div>
         </Grid>
-      </div>
-    </>
+
+        {/* Right Form Side */}
+        <Grid size={{xs: 12, md: 6}} className="signup-form-section">
+          <div className="signup-card">
+            <div className="signup-form-header">
+              <h2>Sign Up</h2>
+              <p>Create a New Account</p>
+            </div>
+
+            <form className="signup-form" onSubmit={(e) => e.preventDefault()}>
+              <TextField
+                fullWidth
+                id="fullname"
+                label="Full Name"
+                variant="outlined"
+                name="fullname"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <Person2Icon className="input-icon" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+
+              <TextField
+                fullWidth
+                id="mail"
+                label="Email Address"
+                type="email"
+                variant="outlined"
+                name="mail"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <EmailIcon className="input-icon" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+
+              <TextField
+                fullWidth
+                id="password"
+                label="Password"
+                type="password"
+                variant="outlined"
+                name="password"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockIcon className="input-icon" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+
+              <TextField
+                fullWidth
+                id="confirmpassword"
+                label="Confirm Password"
+                type="password"
+                variant="outlined"
+                name="confirmPassword"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockIcon className="input-icon" />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+
+              <div className="signup-terms">
+                <Checkbox size="small" className="terms-checkbox" />
+                <span>
+                  I agree to the <a href="#terms">Terms of Service</a> and{" "}
+                  <a href="#privacy">Privacy Policy</a>.
+                </span>
+              </div>
+
+              <button type="submit" className="signup-submit-btn">
+                Create Account
+              </button>
+            </form>
+
+            <div className="signup-footer">
+              <p>
+                Already have an account? <Link to="/login">Sign In</Link>
+              </p>
+            </div>
+          </div>
+        </Grid>
+      </Grid>
+    </div>
   );
 }
 

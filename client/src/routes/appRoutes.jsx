@@ -3,6 +3,7 @@ import IndexPage from "../pages/indexPage";
 import CategoryPage from "../pages/CategoryPage";
 // import ProductPage from "../pages/ProductPage";
 import Signup from "../components/Signup/SignupPage/Signup";
+import Login from "../components/Signup/LoginPage/Login";
 
 function AppRoutes() {
   return (
@@ -12,6 +13,8 @@ function AppRoutes() {
       {/* <Route path="/products" element={<ProductPage />} />  */}
 
       <Route path="/Signup" element={<Signup />} />
+
+      <Route path="/login" element={<Login />} />
 
       <Route path="/category/:categoryName" element={<CategoryPage />} />
     </Routes>

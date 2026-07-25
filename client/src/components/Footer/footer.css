@@ -6,10 +6,8 @@
     width:100%;
     background:#0a0a0a;
     color:#ffffff;
-    margin-top:80px;
-    padding:70px 8%;
+    padding:70px 8%; 
     position: relative;
-    bottom: -30px;
     display:flex;
     justify-content:space-between;
     gap:70px;
