@@ -10,6 +10,10 @@ import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import { Link } from "react-router-dom";
 
+import Person2Icon from '@mui/icons-material/Person2';
+import EmailIcon from '@mui/icons-material/Email';
+import PasswordIcon from '@mui/icons-material/Password';
+
 function Signup() {
   const label = { slotProps: { input: { "aria-label": "Checkbox demo" } } };
 
@@ -78,7 +82,7 @@ function Signup() {
                 {/* singup-form  */}
                 <form>
                   {/* full name  */}
-                  <label htmlFor="fullname">Full Name</label>
+                  <label htmlFor="fullname"><Person2Icon/></label>
                   <TextField
                     id="fullname"
                     label="Enter Your Fullname"
@@ -87,7 +91,7 @@ function Signup() {
                   />
 
                   {/* email  */}
-                  <label htmlFor="mail">Email Address</label>
+                  <label htmlFor="mail"><EmailIcon/></label>
                   <TextField
                     id="mail"
                     label="Enter Your Email Address"
@@ -96,7 +100,7 @@ function Signup() {
                   />
 
                   {/* password  */}
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password"><PasswordIcon/></label>
                   <TextField
                     id="password"
                     label="Enter Your password"
@@ -105,7 +109,7 @@ function Signup() {
                   />
 
                   {/* confirm password  */}
-                  <label htmlFor="confirmpassword">Confirm Password</label>
+                  <label htmlFor="confirmpassword"><PasswordIcon/></label>
                   <TextField
                     id="confirmpassword"
                     label="Please Confirm Your Password"
