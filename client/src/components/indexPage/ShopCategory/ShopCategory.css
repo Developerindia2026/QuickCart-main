@@ -85,7 +85,7 @@
   }
 
   .category-products img {
-    height: 200px;
+    height: 119px;
   }
 
   .category-products h5 {
@@ -141,4 +141,11 @@
   .category-products p {
     font-size: 0.85rem;
   }
+}
+
+/* LINK  */
+.category-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }

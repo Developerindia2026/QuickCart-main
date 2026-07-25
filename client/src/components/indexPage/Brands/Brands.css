@@ -130,7 +130,8 @@
 @media (max-width: 1200px) {
 
   .brands-container {
-    padding: 4rem 5%;
+    padding: 0rem 5%;
+    margin-bottom: -50px;
   }
 
   .embla__slide {
@@ -172,7 +173,7 @@
 @media (max-width: 768px) {
 
   .brands-container {
-    padding: 3.5rem 4%;
+    padding: 0rem 4%;
   }
 
   .brand-content {
