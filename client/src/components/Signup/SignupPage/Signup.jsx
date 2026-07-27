@@ -55,7 +55,7 @@ function Signup() {
       const response = await axios.post(`${API}/signup`, FormData);
 
         localStorage.setItem("token", response.data.token),
-        localStorage.setItem("user", json.stringify(response.data.user));
+        localStorage.setItem("user", JSON.stringify(response.data.user));
 
       navigate("/user");
     } catch (error) {

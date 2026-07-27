@@ -56,9 +56,12 @@ function Login() {
       localStorage.setItem("user", JSON.stringify(loginFetch.data.user));
 
       navigate("/user");
+
     } catch (error) {
+
       console.log(error);
       alert("somthing went upset");
+      
     } finally {
       setLoading(false);
     }

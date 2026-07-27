@@ -63,9 +63,9 @@ function Navbar() {
 
           <button className="btn-account">
             <Link to="/user">
-                <AccountCircleIcon />
-                <span>My Account</span>
-              </Link>
+              <AccountCircleIcon />
+              <span>My Account</span>
+            </Link>
           </button>
         </div>
 
@@ -121,17 +121,17 @@ function Navbar() {
           {/* Bottom Section */}
 
           <div className="mobile-icons">
-            <button className="mobile-btn-like">
+            <button className="mobile-btn-like" onClick={closeMenu}>
               <FavoriteBorderIcon />
               <span>Wishlist</span>
             </button>
 
-            <button className="mobile-btn-nav">
+            <button className="mobile-btn-nav" onClick={closeMenu}>
               <SearchIcon />
               <span>Search</span>
             </button>
 
-            <button className="mobile-btn-account">
+            <button className="mobile-btn-account" onClick={closeMenu}>
               <Link to="/user">
                 <AccountCircleIcon />
                 <span>My Account</span>
