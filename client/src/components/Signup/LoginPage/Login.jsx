@@ -9,13 +9,61 @@ import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Link } from "react-router-dom";
-
 import EmailIcon from "@mui/icons-material/EmailOutlined";
 import LockIcon from "@mui/icons-material/LockOutlined";
-
 const Lottie = LottieModule.default || LottieModule;
+import { useState } from "react";
+import axios from "axios";
+import API from "../../../config/api";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+
+  const [loginInformation, setLoginInformation] = useState({});
+
+  const [loading, setLoading] = useState(false);
+
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const loginForm = (event) => {
+    const { name, value } = event.target;
+
+    setLoginData((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+
+  const loginBackend = async () => {
+    event.preventDefault();
+
+    // validation
+    if (!loginData.email || !loginData.password) {
+      return alert("Please fill the required Feilds");
+    }
+
+    try {
+      setLoading(true);
+      const loginFetch = await axios.post(`${API}/login`, loginData);
+
+      localStorage.setItem("token", loginFetch.data.token);
+      localStorage.setItem("user", JSON.stringify(loginFetch.data.user));
+
+      navigate("/user");
+    } catch (error) {
+      console.log(error);
+      alert("somthing went upset");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="login-wrapper">
       <Grid container className="login-grid-container">
@@ -27,7 +75,7 @@ function Login() {
             <h1 className="login-hero-heading">Shop your favorites</h1>
 
             <p className="login-hero-description">
-              Sign in to manage your orders, check your wishlist, and explore 
+              Sign in to manage your orders, check your wishlist, and explore
               exclusive members-only deals.
             </p>
 
@@ -70,7 +118,9 @@ function Login() {
             </div>
 
             <div className="login-trust">
-              <p>Trusted by <span>10,000+</span> happy shoppers</p>
+              <p>
+                Trusted by <span>10,000+</span> happy shoppers
+              </p>
             </div>
           </div>
         </Grid>
@@ -83,7 +133,7 @@ function Login() {
               <p>Please enter your details to sign in</p>
             </div>
 
-            <form className="login-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="login-form" onSubmit={loginBackend}>
               <TextField
                 fullWidth
                 id="email"
@@ -91,6 +141,8 @@ function Login() {
                 type="email"
                 variant="outlined"
                 name="email"
+                value={loginData.email}
+                onChange={loginForm}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -107,6 +159,8 @@ function Login() {
                 type="password"
                 variant="outlined"
                 name="password"
+                value={loginData.password}
+                onChange={loginForm}
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
@@ -126,8 +180,12 @@ function Login() {
                 </a>
               </div>
 
-              <button type="submit" className="login-submit-btn">
-                Sign In
+              <button
+                type="submit"
+                className="login-submit-btn"
+                disabled={loading}
+              >
+                {loading ? "Working On it.." : "Sign In"}
               </button>
             </form>
 

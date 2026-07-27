@@ -62,7 +62,7 @@ function Navbar() {
           </button>
 
           <button className="btn-account">
-            <Link to="/signup">
+            <Link to="/user">
                 <AccountCircleIcon />
                 <span>My Account</span>
               </Link>
@@ -132,7 +132,7 @@ function Navbar() {
             </button>
 
             <button className="mobile-btn-account">
-              <Link to="/signup">
+              <Link to="/user">
                 <AccountCircleIcon />
                 <span>My Account</span>
               </Link>

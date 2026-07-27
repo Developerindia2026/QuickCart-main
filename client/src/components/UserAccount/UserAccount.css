@@ -1,0 +1,258 @@
+/* ===========================
+   USER ACCOUNT PAGE
+=========================== */
+
+.user-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px 50px;
+}
+
+/* ===========================
+   LOGOUT BUTTON
+=========================== */
+
+.logout-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.logout-btn button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #111827;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.logout-btn button:hover {
+  background: #ef4444;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.25);
+}
+
+/* ===========================
+   PROFILE CARD
+=========================== */
+
+.profile-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+  border: 1px solid #ececec;
+  margin-bottom: 45px;
+}
+
+.profile-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #111827;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.profile-avatar svg {
+  font-size: 58px !important;
+}
+
+.profile-info h1 {
+  font-size: 2rem;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.profile-info p {
+  color: #6b7280;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.profile-info span {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* ===========================
+   SECTION TITLE
+=========================== */
+
+.dashboard-section h2 {
+  font-size: 1.8rem;
+  color: #111827;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+/* ===========================
+   ACTION CARDS
+=========================== */
+
+.user-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  border: 1px solid #ececec;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  height: 100%;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+}
+
+.user-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+  border-color: #111827;
+}
+
+.user-card svg {
+  font-size: 55px !important;
+  color: #111827;
+  margin-bottom: 18px;
+  transition: transform 0.3s ease;
+}
+
+.user-card:hover svg {
+  transform: scale(1.12);
+}
+
+.user-card h3 {
+  color: #111827;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.user-card p {
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width: 992px) {
+  .profile-card {
+    padding: 28px;
+    gap: 20px;
+  }
+
+  .profile-avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .profile-avatar svg {
+    font-size: 46px !important;
+  }
+
+  .profile-info h1 {
+    font-size: 1.6rem;
+  }
+
+  .user-card {
+    padding: 30px 20px;
+  }
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 768px) {
+  .user-container {
+    margin-top: 25px;
+    padding: 0 15px 40px;
+  }
+
+  .logout-btn {
+    justify-content: center;
+  }
+
+  .logout-btn button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .profile-avatar {
+    width: 85px;
+    height: 85px;
+  }
+
+  .profile-avatar svg {
+    font-size: 42px !important;
+  }
+
+  .profile-info h1 {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-section h2 {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .user-card {
+    padding: 28px 20px;
+  }
+
+  .user-card svg {
+    font-size: 48px !important;
+  }
+
+  .user-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .user-card p {
+    font-size: 14px;
+  }
+}
+
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media (max-width: 480px) {
+  .profile-info h1 {
+    font-size: 1.3rem;
+  }
+
+  .dashboard-section h2 {
+    font-size: 1.35rem;
+  }
+
+  .logout-btn button {
+    padding: 11px 18px;
+    font-size: 14px;
+  }
+
+  .user-card {
+    border-radius: 16px;
+    padding: 25px 18px;
+  }
+}

@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 let app = express();
 const categoryRoute = require("./routes/categoryPage");
-const port = process.env.PORT || 3000;
+const signupRoute = require("./routes/Signup");
+const loginRouter = require("./routes/Login");
+const port = 3000;
 
 // DATABASE
 main().catch((err) => console.log(err));
@@ -27,13 +29,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/images", express.static("images"));
 app.use(express.json());
 
-
 // routes
-app.get("/server", (req, res) => {
+app.get("/", (req, res) => {
   res.send("server QUICKCART working");
 });
 
 app.use("/category", categoryRoute);
+
+app.use("/signup", signupRoute);
+
+app.use("/login", loginRouter);
 
 // PORT
 app.listen(port, () => {
