@@ -4,7 +4,7 @@ import API from "../config/api";
 import { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import "./CategoryPage.css";
-
+import { Link } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
@@ -33,10 +33,13 @@ function CategoryPage() {
       <Grid container spacing={3}>
         {products.map((product) => (
           <Grid key={product._id} size={{ xs: 6, sm: 6, md: 4, lg: 3 }}>
+             <Link to={`/product/${product._id}`}>
             <div className="product-card">
+             
               <div className="product-image">
                 <img src={`${API}${product.image[0]}`} alt={product.title} />
               </div>
+              
 
               <div className="product-content">
                 <span className="product-brand">{product.brand}</span>
@@ -64,6 +67,7 @@ function CategoryPage() {
                 </div>
               </div>
             </div>
+            </Link>
           </Grid>
         ))}
       </Grid>

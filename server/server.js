@@ -6,6 +6,7 @@ let app = express();
 const categoryRoute = require("./routes/categoryPage");
 const signupRoute = require("./routes/Signup");
 const loginRouter = require("./routes/Login");
+const ProductDetails = require("./routes/ProductDetails");
 const port = 3000;
 
 // DATABASE
@@ -39,6 +40,8 @@ app.use("/category", categoryRoute);
 app.use("/signup", signupRoute);
 
 app.use("/login", loginRouter);
+
+app.use("/product", ProductDetails);
 
 // PORT
 app.listen(port, () => {
