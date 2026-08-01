@@ -7,6 +7,8 @@ const categoryRoute = require("./routes/categoryPage");
 const signupRoute = require("./routes/Signup");
 const loginRouter = require("./routes/Login");
 const ProductDetails = require("./routes/ProductDetails");
+const AddressRoute = require("./routes/Address");
+const CartRoute = require("./routes/Cartroute");
 const port = 3000;
 
 // DATABASE
@@ -42,6 +44,10 @@ app.use("/signup", signupRoute);
 app.use("/login", loginRouter);
 
 app.use("/product", ProductDetails);
+
+app.use("/address", AddressRoute);
+
+app.use("/cart", CartRoute);
 
 // PORT
 app.listen(port, () => {

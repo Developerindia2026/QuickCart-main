@@ -7,24 +7,28 @@ import "./ProductDetails.css";
 import useEmblaCarousel from "embla-carousel-react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Alert from "@mui/material/Alert";
+import CheckIcon from "@mui/icons-material/Check";
 
 function ProductDetails() {
+  const [isAlert, setIsAlert] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true, 
+    loop: true,
     slidesToScroll: 1,
   });
 
- const goToPrev = () => {
-  if (emblaApi) emblaApi.scrollPrev();
-};
+  const goToPrev = () => {
+    if (emblaApi) emblaApi.scrollPrev();
+  };
 
-const goToNext = () => {
-  if (emblaApi) emblaApi.scrollNext();
-};
+  const goToNext = () => {
+    if (emblaApi) emblaApi.scrollNext();
+  };
 
   const { product_id } = useParams();
-
-  console.log(product_id);
   let [productDetails, setProductDetails] = useState(null);
 
   const fetchProducts = async () => {
@@ -39,7 +43,39 @@ const goToNext = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [product_id]);
+  }, []);
+
+  const addCart = async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        `${API}/cart`,
+        {
+          productID: product_id,
+          quantityNO: 1,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      setSuccess(true);
+
+      setIsAlert(true);
+
+      setTimeout(() => {
+        setIsAlert(false);
+      }, 3000);
+    } catch (error) {
+      console.log(error);
+      alert("Error by the frontend");
+    } finally {
+      setIsLoading(false)
+    }
+  };
 
   return (
     <>
@@ -47,11 +83,11 @@ const goToNext = () => {
         {productDetails && (
           <Grid container spacing={5} className="productdetails_container">
             <Grid size={{ xs: 12, md: 6 }}>
-              <div className="embla">
-                <div className="embla__viewport" ref={emblaRef}>
-                  <div className="embla__container">
+              <div className="productdetails-embla">
+                <div className="productdetails-embla__viewport" ref={emblaRef}>
+                  <div className="productdetails-embla__container">
                     {productDetails.image.map((img, index) => (
-                      <div className="embla__slide" key={index}>
+                      <div className="productdetails-embla__slide" key={index}>
                         <div className="productdetails_img">
                           <img
                             src={`${API}${img}`}
@@ -75,6 +111,20 @@ const goToNext = () => {
 
             <Grid size={{ xs: 12, md: 6 }}>
               <div className="productdetails-content">
+                {/* ALERT BOX  */}
+
+                {isAlert && (
+                  <div className="product-details alert">
+                    <Alert
+                      icon={<CheckIcon fontSize="inherit" />}
+                      severity="success"
+                      variant="filled"
+                    >
+                      Product Successfully Added to Cart
+                    </Alert>
+                  </div>
+                )}
+
                 <div className="productdetails-brand">
                   <p className="brand-details">{productDetails.brand}</p>
                 </div>
@@ -87,14 +137,21 @@ const goToNext = () => {
                   </p>
                 </div>
                 <div className="productdetails-price">
-                  <h4 className="price-details">{productDetails.price}</h4>
+                  <h4 className="price-details">₹{productDetails.price}</h4>
                 </div>
                 <div className="details-btn">
                   <div className="button-products">
-                    <button className="buy-btn">Buy Now</button>
-                  </div>
-                  <div className="button-products">
-                    <button className="cart-btn">Add To Cart</button>
+                    <button
+                      className={`cart-btn ${success ? "added" : ""}`}
+                      onClick={() => addCart()}
+                      disabled={success}
+                    >
+                      {isLoading
+                        ? "Processing.."
+                        : success
+                          ? "✓ Added To Cart"
+                          : "Add To Cart"}
+                    </button>
                   </div>
                 </div>
               </div>

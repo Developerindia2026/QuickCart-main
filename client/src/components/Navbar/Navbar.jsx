@@ -7,6 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 
 function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -53,9 +54,11 @@ function Navbar() {
         {/* Desktop Buttons */}
 
         <div className="btn-section">
-          <button className="btn-like">
-            <FavoriteBorderIcon />
-          </button>
+          <Link to="/cart">
+            <button className="btn-like">
+              <LocalMallIcon />
+            </button>
+          </Link>
 
           <button className="btn-nav">
             <SearchIcon />
@@ -121,10 +124,13 @@ function Navbar() {
           {/* Bottom Section */}
 
           <div className="mobile-icons">
+            <Link to="/cart">
             <button className="mobile-btn-like" onClick={closeMenu}>
-              <FavoriteBorderIcon />
-              <span>Wishlist</span>
+              <LocalMallIcon />
+              <span>Cart</span>
             </button>
+              </Link>
+          
 
             <button className="mobile-btn-nav" onClick={closeMenu}>
               <SearchIcon />
