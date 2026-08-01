@@ -24,7 +24,6 @@ function AppRoutes() {
       </Route>
 
       <Route path="/" element={<IndexPage />} />
-      <Route path="/cart" element={<CartDrawer />} />
 
       <Route path="/category/:categoryName" element={<CategoryPage />} />
       <Route path="/product/:product_id" element={<ProductDetails />} />
@@ -33,6 +32,7 @@ function AppRoutes() {
         <Route path="/address" element={<AddressPage />} />
         <Route path="/address/new-Address" element={<NewAddress />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/cart" element={<CartDrawer />} />
       </Route>
     </Routes>
   );
