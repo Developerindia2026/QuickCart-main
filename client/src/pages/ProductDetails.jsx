@@ -8,9 +8,12 @@ import useEmblaCarousel from "embla-carousel-react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Alert from "@mui/material/Alert";
+import { useNavigate } from "react-router-dom";
 import CheckIcon from "@mui/icons-material/Check";
 
 function ProductDetails() {
+  const navigate = useNavigate();
+
   const [isAlert, setIsAlert] = useState(false);
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -48,6 +51,10 @@ function ProductDetails() {
   const addCart = async () => {
     const token = localStorage.getItem("token");
 
+    if (!token) {
+      return navigate("/login");
+    }
+
     try {
       setIsLoading(true);
       const response = await axios.post(
@@ -73,7 +80,7 @@ function ProductDetails() {
       console.log(error);
       alert("Error by the frontend");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
 
