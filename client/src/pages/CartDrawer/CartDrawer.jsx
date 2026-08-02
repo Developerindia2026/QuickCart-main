@@ -5,12 +5,19 @@ import API from "../../config/api";
 import Grid from "@mui/material/Grid";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import { useNavigate } from "react-router-dom";
 
 function CartDrawer() {
+  const navigate = useNavigate();
+
   const [items, setItems] = useState([]);
 
   const fetchCart = async () => {
     const token = localStorage.getItem("token");
+
+    if (!token) {
+      return navigate("/login");
+    }
     const response = await axios.get(`${API}/cart`, {
       headers: {
         Authorization: `bearer ${token}`,
@@ -24,6 +31,10 @@ function CartDrawer() {
     try {
       const token = localStorage.getItem("token");
 
+      if (!token) {
+        return navigate("/login");
+      }
+
       const response = await axios.delete(`${API}/cart/delete/${itemid}`, {
         headers: {
           Authorization: `bearer ${token}`,
@@ -35,6 +46,10 @@ function CartDrawer() {
       console.log(error);
       alert("somthing went wrong");
     }
+  };
+
+  const submitbtn = () => {
+    navigate("/address");
   };
 
   useEffect(() => {
@@ -133,7 +148,7 @@ function CartDrawer() {
               <span>₹ {subtotal}</span>
             </div>
 
-            <button className="checkout-btn">Proceed to Checkout</button>
+            <button className="checkout-btn" onClick={submitbtn}>Proceed to Checkout</button>
           </div>
         )}
       </div>

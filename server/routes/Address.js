@@ -3,6 +3,29 @@ const router = express.Router();
 const Address = require("../models/Address");
 const verifyToken = require("../Middlewares/authetication.js");
 
+router.delete("/delete/:itemID", verifyToken, async (req, res) => {
+  const userID = req.user.id;
+  const { itemID } = req.params;
+
+  try {
+    const deleteAddress = await Address.findOneAndDelete({
+      user: userID,
+      _id: itemID,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "valid command",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "invalid command",
+    });
+  }
+});
+
 router.post("/new-Address", verifyToken, async (req, res) => {
   const {
     user,

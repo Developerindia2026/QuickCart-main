@@ -13,6 +13,11 @@ function AddressPage() {
 
   const fetchAddress = async () => {
     const token = localStorage.getItem("token");
+
+    if (!token) {
+      return navigate("/login");
+    }
+
     try {
       const response = await axios.get(`${API}/address`, {
         headers: {
@@ -23,6 +28,27 @@ function AddressPage() {
       setAddress(response.data.address);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const deleteAddress = async (itemID) => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      return navigate("/login");
+    }
+
+    try {
+      const response = await axios.delete(`${API}/address/delete/${itemID}`, {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
+
+      fetchAddress();
+    } catch (error) {
+      console.log(error);
+      alert("please try after sometimes");
     }
   };
 
@@ -69,7 +95,9 @@ function AddressPage() {
 
                   <div className="address-actions">
                     <button>Edit</button>
-                    <button>Delete</button>
+                    <button onClick={() => deleteAddress(item._id)}>
+                      Delete
+                    </button>
                   </div>
                 </div>
 

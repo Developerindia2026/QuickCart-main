@@ -6,19 +6,19 @@ import LocalMallIcon from "@mui/icons-material/LocalMall";
 import PersonIcon from "@mui/icons-material/Person";
 import Grid from "@mui/material/Grid";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function UserAccount() {
-
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("user")) || {};
 
-  const handleLogout = ()=> {
+  const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
     navigate("/login");
-  }
+  };
 
   return (
     <div className="user-container">
@@ -57,11 +57,13 @@ function UserAccount() {
           </Grid>
 
           <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-            <div className="user-card">
-              <ShoppingCartIcon />
-              <h3>Cart</h3>
-              <p>Review items waiting in your shopping cart.</p>
-            </div>
+            <Link to="/cart">
+              <div className="user-card">
+                <ShoppingCartIcon />
+                <h3>Cart</h3>
+                <p>Review items waiting in your shopping cart.</p>
+              </div>
+            </Link>
           </Grid>
 
           <Grid size={{ xs: 12, sm: 6, md: 4 }}>
