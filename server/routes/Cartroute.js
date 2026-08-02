@@ -3,6 +3,37 @@ const router = express.Router();
 const cart = require("../models/Cart");
 const verifyToken = require("../Middlewares/authetication");
 
+router.put("/quantity/:itemID/:quantity", verifyToken, async (req, res) => {
+  const { itemID, quantity } = req.params;
+  const userID = req.user.id;
+
+  try {
+    const updateQuanity = await cart.findOneAndUpdate(
+      {
+        user: userID,
+        _id: itemID,
+      },
+      {
+        quantity: Number(quantity),
+      },
+      {
+        new: true,
+      },
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Quantity updated successfully",
+      updateQuanity,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+    });
+  }
+});
+
 router.delete("/delete/:itemid", verifyToken, async (req, res) => {
   try {
     const { itemid } = req.params;

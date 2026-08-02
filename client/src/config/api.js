@@ -1,4 +1,4 @@
-const API = "https://quickcart-main-vy3p.onrender.com";
+const API = "http://localhost:3000";
 
 
 export default API;

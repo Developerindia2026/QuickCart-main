@@ -56,6 +56,22 @@ function CartDrawer() {
     fetchCart();
   }, []);
 
+  const updateQuantity = async (itemID, quantity) => {
+    const token = localStorage.getItem("token");
+
+    const response = await axios.put(
+      `${API}/cart/quantity/${itemID}/${quantity}`,
+      {},
+      {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      },
+    );
+
+    fetchCart();
+  };
+
   const subtotal = items.reduce((total, item) => {
     return total + item.product.price * item.quantity;
   }, 0);
@@ -104,13 +120,23 @@ function CartDrawer() {
                   <h5>Quantity</h5>
 
                   <div className="quantity-box">
-                    <button className="qty-btn">
+                    <button
+                      className="qty-btn"
+                      onClick={() => {
+                        if (item.quantity > 1) {
+                          updateQuantity(item._id, item.quantity - 1);
+                        }
+                      }}
+                    >
                       <RemoveIcon />
                     </button>
 
                     <span>{item.quantity}</span>
 
-                    <button className="qty-btn">
+                    <button
+                      className="qty-btn"
+                      onClick={() => updateQuantity(item._id, item.quantity + 1)}
+                    >
                       <AddIcon />
                     </button>
                   </div>
@@ -148,7 +174,9 @@ function CartDrawer() {
               <span>₹ {subtotal}</span>
             </div>
 
-            <button className="checkout-btn" onClick={submitbtn}>Proceed to Checkout</button>
+            <button className="checkout-btn" onClick={submitbtn}>
+              Proceed to Checkout
+            </button>
           </div>
         )}
       </div>
