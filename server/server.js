@@ -9,6 +9,7 @@ const loginRouter = require("./routes/Login");
 const ProductDetails = require("./routes/ProductDetails");
 const AddressRoute = require("./routes/Address");
 const CartRoute = require("./routes/Cartroute");
+// const PaymentRoute = require("./routes/PaymentRoute"); 
 const port = 3000;
 
 // DATABASE
@@ -48,6 +49,8 @@ app.use("/product", ProductDetails);
 app.use("/address", AddressRoute);
 
 app.use("/cart", CartRoute);
+
+// app.use("/payment", PaymentRoute);
 
 // PORT
 app.listen(port, () => {

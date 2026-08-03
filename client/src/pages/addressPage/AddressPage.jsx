@@ -56,10 +56,11 @@ function AddressPage() {
     fetchAddress();
   }, []);
 
-  const submitAddress = (address) => {
+  const submitAddress = (addressID) => {
+    console.log(addressID);
     navigate("/payment", {
       state: {
-        address,
+        address: addressID,
       },
     });
   };

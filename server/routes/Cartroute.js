@@ -3,6 +3,29 @@ const router = express.Router();
 const cart = require("../models/Cart");
 const verifyToken = require("../Middlewares/authetication");
 
+router.get("/payment", verifyToken, async (req, res) => {
+  const userID = req.user.id;
+
+  try {
+    const cartItems = await cart.find({
+      user: userID,
+    }).populate("product");
+
+     res.status(200).json({
+      success: true,
+      message: " fetch cart",
+      items: cartItems,
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "unable to fetch cart",
+    });
+  }
+});
+
 router.put("/quantity/:itemID/:quantity", verifyToken, async (req, res) => {
   const { itemID, quantity } = req.params;
   const userID = req.user.id;

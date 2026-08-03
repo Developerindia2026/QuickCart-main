@@ -3,6 +3,37 @@ const router = express.Router();
 const Address = require("../models/Address");
 const verifyToken = require("../Middlewares/authetication.js");
 
+router.get("/:addressID", verifyToken, async (req, res) => {
+  const { addressID } = req.params;
+  const userID = req.user.id;
+
+  try {
+    const getAddress = await Address.findOne({
+      user: userID,
+      _id: addressID,
+    });
+
+    if (!getAddress) {
+      return res.status(409).json({
+        success: false,
+        message: "not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "valid",
+      currentAddress: getAddress,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      message: "invalid",
+    });
+  }
+});
+
 router.delete("/delete/:itemID", verifyToken, async (req, res) => {
   const userID = req.user.id;
   const { itemID } = req.params;
