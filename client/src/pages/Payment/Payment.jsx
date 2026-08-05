@@ -4,6 +4,8 @@ import API from "../../config/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import PaymentsIcon from "@mui/icons-material/Payments";
+import razorpayIcon from "../../assets/razorpay.png";
+import codIcon from "../../assets/cod.png";
 import "./Payment.css";
 
 // RADIO ELEMENT
@@ -56,6 +58,52 @@ function Payment() {
     }
   };
 
+  //PAYMENT FUNCTION*****************************************
+  const PaymentOrder = async () => {
+    try {
+      // Backend se order create karvao
+      const response = await axios.post(`${API}/payment/create-order`);
+
+      const { order } = response.data;
+      // Razorpay Checkout Options
+      const options = {
+        key: import.meta.env.VITE_Test_API_Key,
+        amount: order.amount,
+        currency: order.currency,
+        name: "QuickCart",
+        description: "Order Payment",
+        order_id: order.id,
+
+        prefill: {
+          name: "Deepanshu",
+          email: "deepanshu@gmail.com",
+          contact: "9999999999",
+        },
+
+        handler: async function (response) {
+          const verify = await axios.post(
+            `${API}/payment/verify-payment`,
+            response,
+          );
+
+          console.log(verify.data);
+        },
+
+        theme: {
+          color: "#2563eb",
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+
+      navigate("/order-successful");
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // GET CART ITEMS
   const getCart = async () => {
     const token = localStorage.getItem("token");
@@ -68,8 +116,6 @@ function Payment() {
       });
 
       setCart(cart.data.items);
-
-      console.log(cart.data.items);
     } catch (error) {
       conosole.log(error);
       alert("unable to fetch cart items by backend");
@@ -199,11 +245,7 @@ function Payment() {
               </div>
             </div>
 
-            <img
-              src="/images/payment/razorpay.png"
-              alt="Razorpay"
-              className="payment-logo"
-            />
+            <img src={razorpayIcon} alt="Razorpay" className="payment-logo" />
           </div>
 
           <div className="payment-option">
@@ -216,18 +258,14 @@ function Payment() {
               </div>
             </div>
 
-            <img
-              src="/images/payment/cod.png"
-              alt="COD"
-              className="payment-logo"
-            />
+            <img src={codIcon} alt="COD" className="payment-logo" />
           </div>
         </div>
       </div>
 
       {/* .payment page  */}
       <div className="payment-section-container">
-        <button className="pay-now-btn">
+        <button className="pay-now-btn" onClick={PaymentOrder}>
           <span>PAY SECURELY</span>
           <PaymentsIcon />
         </button>

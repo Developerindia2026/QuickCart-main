@@ -10,6 +10,7 @@ import AddressPage from "../pages/addressPage/AddressPage";
 import NewAddress from "../pages/addressPage/NewAddress/NewAddress";
 import Payment from "../pages/Payment/Payment";
 import CartDrawer from "../pages/CartDrawer/CartDrawer";
+import OrderPage from "../pages/orderPage/orderPage";
 
 function AppRoutes() {
   return (
@@ -33,6 +34,7 @@ function AppRoutes() {
         <Route path="/address/new-Address" element={<NewAddress />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/cart" element={<CartDrawer />} />
+        <Route path="/order-successfull" element={OrderPage}/>
       </Route>
     </Routes>
   );
