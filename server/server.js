@@ -9,7 +9,8 @@ const loginRouter = require("./routes/Login");
 const ProductDetails = require("./routes/ProductDetails");
 const AddressRoute = require("./routes/Address");
 const CartRoute = require("./routes/Cartroute");
-const PaymentRoute = require("./routes/PaymentRoute"); 
+const PaymentRoute = require("./routes/PaymentRoute");
+const ReviewRoute = require("./routes/reviewRoute");
 const port = 3000;
 
 // DATABASE
@@ -52,6 +53,7 @@ app.use("/cart", CartRoute);
 
 app.use("/payment", PaymentRoute);
 
+app.use("/review", ReviewRoute);
 // PORT
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

@@ -10,6 +10,9 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Alert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
 import CheckIcon from "@mui/icons-material/Check";
+import TextField from "@mui/material/TextField";
+import Rating from "@mui/material/Rating";
+import Stack from "@mui/material/Stack";
 
 function ProductDetails() {
   const navigate = useNavigate();
@@ -17,6 +20,15 @@ function ProductDetails() {
   const [isAlert, setIsAlert] = useState(false);
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  // REVIEW HANDLE
+  const [reviewData, setReview] = useState({
+    rating: "",
+    comment: "",
+  });
+
+  // RENDER REVIEW
+  const [isReview, setIsReview] = useState(null);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -34,6 +46,73 @@ function ProductDetails() {
   const { product_id } = useParams();
   let [productDetails, setProductDetails] = useState(null);
 
+  // REVIE handle
+
+  const reviewHandle = (event) => {
+    const { name, value } = event.target;
+
+    setReview((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+
+  // review submit
+  const reviewSubmit = async (event) => {
+    event.preventDefault();
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      return alert(`please make sure your account To Be Logged First`);
+      navigate("/login");
+    }
+
+    try {
+      setIsLoading(true);
+      const response = await axios.post(
+        `${API}/review/${product_id}`,
+        reviewData,
+        {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        },
+      );
+    } catch (error) {
+      console.log(error);
+      alert(`review error by frontend`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // GET REVIEW
+  const renderReview = async () => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      return alert(`please make sure your account To Be Logged First`);
+      navigate("/login");
+    }
+
+    try {
+      const response = await axios.get(`${API}/review/${product_id}`, {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      });
+
+      setIsReview(response.data.reviewData);
+      console.log(response.data.reviewData);
+    } catch (error) {
+      console.log(error);
+      alert(`UNABLE TO FETCH THE REVIEWS...`);
+    }
+  };
+
   const fetchProducts = async () => {
     try {
       const response = await axios.get(`${API}/product/${product_id}`);
@@ -46,6 +125,7 @@ function ProductDetails() {
 
   useEffect(() => {
     fetchProducts();
+    renderReview();
   }, []);
 
   const addCart = async () => {
@@ -164,6 +244,94 @@ function ProductDetails() {
               </div>
             </Grid>
           </Grid>
+        )}
+
+        {/* REVIEW SECTION ***************************** */}
+
+        <div className="review">
+          <div className="review__container">
+            <div className="review__header">
+              <h2 className="review__title">Share Your Experience</h2>
+              <p className="review__subtitle">
+                Your feedback helps other customers make better decisions.
+              </p>
+            </div>
+
+            <form className="review__form" onSubmit={reviewSubmit}>
+              <div className="review__field">
+                <label className="review__label">Overall Rating</label>
+
+                <Stack spacing={1}>
+                  <Rating
+                    name="rating"
+                    size="large"
+                    value={reviewData.rating}
+                    max={5}
+                    min={1}
+                    onChange={(event, newValue) => {
+                      setReview({
+                        ...reviewData,
+                        rating: newValue,
+                      });
+                    }}
+                  />
+                </Stack>
+              </div>
+
+              <div className="review__field">
+                <TextField
+                  fullWidth
+                  multiline
+                  rows={5}
+                  id="review"
+                  name="comment"
+                  label="Write your review..."
+                  variant="outlined"
+                  value={reviewData.comment}
+                  onChange={reviewHandle}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="review__button"
+                disabled={isLoading}
+              >
+                {isLoading ? "Adding Your Feedback" : "Submit Review"}
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* review render**************************  */}
+
+        {isReview && (
+          <section className="review-list">
+            <article className="review-card">
+              <div className="review-card__header">
+                <div className="review-card__avatar">
+                  {isReview.user?.username?.charAt(0).toUpperCase()}
+                </div>
+
+                <div className="review-card__user">
+                  <h4 className="review-card__username">
+                    {isReview.user?.username}
+                  </h4>
+
+                  <p className="review-card__email">{isReview.user?.email}</p>
+
+                  <Rating
+                    value={isReview.rating}
+                    readOnly
+                    precision={0.5}
+                    size="small"
+                  />
+                </div>
+              </div>
+
+              <p className="review-card__comment">{isReview.comment}</p>
+            </article>
+          </section>
         )}
       </div>
     </>
