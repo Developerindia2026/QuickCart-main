@@ -66,8 +66,10 @@ function ProductDetails() {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      return alert(`please make sure your account To Be Logged First`);
-      navigate("/login");
+      return (
+        alert(`please make sure your account To Be Logged First`),
+        navigate("/login")
+      );
     }
 
     try {
@@ -92,11 +94,6 @@ function ProductDetails() {
   // GET REVIEW
   const renderReview = async () => {
     const token = localStorage.getItem("token");
-
-    if (!token) {
-      return alert(`please make sure your account To Be Logged First`);
-      navigate("/login");
-    }
 
     try {
       const response = await axios.get(`${API}/review/${product_id}`, {
@@ -248,7 +245,7 @@ function ProductDetails() {
 
         {/* REVIEW SECTION ***************************** */}
 
-        <div className="review">
+        <div className="review" id="review-submit-container">
           <div className="review__container">
             <div className="review__header">
               <h2 className="review__title">Share Your Experience</h2>
@@ -305,7 +302,7 @@ function ProductDetails() {
 
         {/* review render**************************  */}
 
-        {isReview && (
+        {isReview ? (
           <section className="review-list">
             <article className="review-card">
               <div className="review-card__header">
@@ -332,6 +329,23 @@ function ProductDetails() {
               <p className="review-card__comment">{isReview.comment}</p>
             </article>
           </section>
+        ) : (
+          <div className="review-empty">
+            <div className="review-empty-card">
+              <div className="review-empty-icon">⭐</div>
+
+              <h2>No Reviews Yet</h2>
+
+              <p>
+                Be the first customer to share your experience with this
+                product. Your review helps other shoppers make better decisions.
+              </p>
+
+              <button className="review-btn">
+                <a href="#review-submit-container">Write the First Review</a>
+              </button>
+            </div>
+          </div>
         )}
       </div>
     </>

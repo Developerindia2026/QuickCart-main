@@ -3,14 +3,12 @@ const router = express.Router();
 const review = require("../models/Review");
 const verifyToken = require("../Middlewares/authetication");
 
-router.get("/:productid", verifyToken, async (req, res) => {
-  const UserId = req.user.id;
+router.get("/:productid", async (req, res) => {
   const ProductID = req.params.productid;
 
   try {
     const findReview = await review
       .findOne({
-        user: UserId,
         product: ProductID,
       })
       .populate("user");
